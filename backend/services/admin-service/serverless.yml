@@ -1,4 +1,4 @@
-service: proplist-wishlist-service
+service: proplist-admin-service
 
 useDotenv: true
 
@@ -19,29 +19,38 @@ provider:
     AWS_REGION_NAME: ap-southeast-2
 
 functions:
-  addWishlist:
-    handler: src/addWishlist.handler
+  listPendingProperties:
+    handler: src/listPendingProperties.handler
     events:
       - httpApi:
-          path: /wishlists
-          method: POST
-          authorizer:
-            id: ugclgq
-
-  getWishlist:
-    handler: src/getWishlist.handler
-    events:
-      - httpApi:
-          path: /wishlists
+          path: /admin/properties
           method: GET
           authorizer:
             id: ugclgq
 
-  removeWishlist:
-    handler: src/removeWishlist.handler
+  updatePropertyStatus:
+    handler: src/updatePropertyStatus.handler
     events:
       - httpApi:
-          path: /wishlists/{propertyId}
-          method: DELETE
+          path: /admin/properties/{id}
+          method: PATCH
+          authorizer:
+            id: ugclgq
+
+  listUsers:
+    handler: src/listUsers.handler
+    events:
+      - httpApi:
+          path: /admin/users
+          method: GET
+          authorizer:
+            id: ugclgq
+
+  updateUser:
+    handler: src/updateUser.handler
+    events:
+      - httpApi:
+          path: /admin/users/{id}
+          method: PATCH
           authorizer:
             id: ugclgq

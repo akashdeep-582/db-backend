@@ -6,6 +6,8 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: ap-southeast-2
+  httpApi:
+    id: !ImportValue proplist-api-gateway-HttpApiId
   environment:
     DB_HOST: ${env:DB_HOST}
     DB_PORT: ${env:DB_PORT}
@@ -33,6 +35,8 @@ functions:
       - httpApi:
           path: /properties
           method: POST
+          authorizer:
+            id: ugclgq
 
   listProperties:
     handler: src/listProperties.handler
@@ -54,3 +58,5 @@ functions:
       - httpApi:
           path: /properties/{id}/images
           method: POST
+          authorizer:
+            id: ugclgq

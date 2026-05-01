@@ -1,0 +1,32 @@
+service: proplist-api-gateway
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-2
+  httpApi:
+    cors: true
+    authorizers:
+      cognitoAuthorizer:
+        type: jwt
+        identitySource: $request.header.Authorization
+        issuerUrl: https://cognito-idp.ap-southeast-2.amazonaws.com/${env:COGNITO_USER_POOL_ID}
+        audience:
+          - ${env:COGNITO_CLIENT_ID}
+
+functions:
+  healthCheck:
+    handler: src/healthCheck.handler
+    events:
+      - httpApi:
+          path: /health
+          method: GET
+
+resources:
+  Outputs:
+    HttpApiId:
+      Value: !Ref HttpApi
+      Export:
+        Name: proplist-api-gateway-HttpApiId

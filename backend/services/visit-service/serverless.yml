@@ -6,6 +6,8 @@ provider:
   name: aws
   runtime: nodejs18.x
   region: ap-southeast-2
+  httpApi:
+    id: !ImportValue proplist-api-gateway-HttpApiId
   environment:
     DB_HOST: ${env:DB_HOST}
     DB_PORT: ${env:DB_PORT}
@@ -23,6 +25,8 @@ functions:
       - httpApi:
           path: /visits
           method: POST
+          authorizer:
+            id: ugclgq
 
   getVisits:
     handler: src/getVisits.handler
@@ -30,6 +34,8 @@ functions:
       - httpApi:
           path: /visits
           method: GET
+          authorizer:
+            id: ugclgq
 
   updateVisit:
     handler: src/updateVisit.handler
@@ -37,3 +43,5 @@ functions:
       - httpApi:
           path: /visits/{id}
           method: PATCH
+          authorizer:
+            id: ugclgq

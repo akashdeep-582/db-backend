@@ -1,0 +1,7 @@
+{
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "devDependencies": {
+    "serverless": "^3.0.0"
+  }
+}
