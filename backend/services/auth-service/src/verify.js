@@ -26,7 +26,7 @@ exports.handler = async (event) => {
 
     const confirmCommand = new ConfirmSignUpCommand({
       ClientId: process.env.COGNITO_CLIENT_ID,
-      Username: email,
+      Username: email.replace('@', '_').replace(/\./g, '_'),
       ConfirmationCode: code
     })
 
