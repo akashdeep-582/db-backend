@@ -1,0 +1,37 @@
+service: proplist-auth-service
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-2
+  environment:
+    DB_HOST: ${env:DB_HOST}
+    DB_PORT: ${env:DB_PORT}
+    DB_NAME: ${env:DB_NAME}
+    DB_USER: ${env:DB_USER}
+    DB_PASSWORD: ${env:DB_PASSWORD}
+    COGNITO_USER_POOL_ID: ${env:COGNITO_USER_POOL_ID}
+    COGNITO_CLIENT_ID: ${env:COGNITO_CLIENT_ID}
+    AWS_REGION_NAME: ap-southeast-2
+
+functions:
+  register:
+    handler: src/register.handler
+    events:
+      - httpApi:
+          path: /auth/register
+          method: POST
+
+  login:
+    handler: src/login.handler
+    events:
+      - httpApi:
+          path: /auth/login
+          method: POST
+
+  verify:
+    handler: src/verify.handler
+    events:
+      - httpApi:
+          path: /auth/verify
+          method: POST

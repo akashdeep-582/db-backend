@@ -1,0 +1,16 @@
+{
+  "name": "auth-service",
+  "version": "1.0.0",
+  "description": "Authentication microservice for DropBroker",
+  "main": "src/register.js",
+  "scripts": {
+    "deploy": "serverless deploy"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.0.0",
+    "pg": "^8.11.0"
+  },
+  "devDependencies": {
+    "serverless": "^3.0.0"
+  }
+}
