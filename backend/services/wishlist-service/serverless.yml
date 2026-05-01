@@ -1,0 +1,39 @@
+service: proplist-wishlist-service
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-2
+  environment:
+    DB_HOST: ${env:DB_HOST}
+    DB_PORT: ${env:DB_PORT}
+    DB_NAME: ${env:DB_NAME}
+    DB_USER: ${env:DB_USER}
+    DB_PASSWORD: ${env:DB_PASSWORD}
+    COGNITO_USER_POOL_ID: ${env:COGNITO_USER_POOL_ID}
+    COGNITO_CLIENT_ID: ${env:COGNITO_CLIENT_ID}
+    AWS_REGION_NAME: ap-southeast-2
+
+functions:
+  addWishlist:
+    handler: src/addWishlist.handler
+    events:
+      - httpApi:
+          path: /wishlists
+          method: POST
+
+  getWishlist:
+    handler: src/getWishlist.handler
+    events:
+      - httpApi:
+          path: /wishlists
+          method: GET
+
+  removeWishlist:
+    handler: src/removeWishlist.handler
+    events:
+      - httpApi:
+          path: /wishlists/{propertyId}
+          method: DELETE
