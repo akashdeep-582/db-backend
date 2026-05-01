@@ -1,0 +1,56 @@
+service: proplist-property-service
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-2
+  environment:
+    DB_HOST: ${env:DB_HOST}
+    DB_PORT: ${env:DB_PORT}
+    DB_NAME: ${env:DB_NAME}
+    DB_USER: ${env:DB_USER}
+    DB_PASSWORD: ${env:DB_PASSWORD}
+    COGNITO_USER_POOL_ID: ${env:COGNITO_USER_POOL_ID}
+    COGNITO_CLIENT_ID: ${env:COGNITO_CLIENT_ID}
+    S3_BUCKET_NAME: ${env:S3_BUCKET_NAME}
+    AWS_REGION_NAME: ap-southeast-2
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:PutObject
+            - s3:GetObject
+            - s3:DeleteObject
+          Resource: arn:aws:s3:::${env:S3_BUCKET_NAME}/*
+
+functions:
+  createProperty:
+    handler: src/createProperty.handler
+    events:
+      - httpApi:
+          path: /properties
+          method: POST
+
+  listProperties:
+    handler: src/listProperties.handler
+    events:
+      - httpApi:
+          path: /properties
+          method: GET
+
+  getProperty:
+    handler: src/getProperty.handler
+    events:
+      - httpApi:
+          path: /properties/{id}
+          method: GET
+
+  uploadImage:
+    handler: src/uploadImage.handler
+    events:
+      - httpApi:
+          path: /properties/{id}/images
+          method: POST
