@@ -1,5 +1,7 @@
 service: proplist-auth-service
 
+useDotenv: true
+
 provider:
   name: aws
   runtime: nodejs18.x
@@ -34,4 +36,10 @@ functions:
     events:
       - httpApi:
           path: /auth/verify
+          method: POST
+  resendCode:
+    handler: src/resendCode.handler
+    events:
+      - httpApi:
+          path: /auth/resend-code
           method: POST

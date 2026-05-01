@@ -36,7 +36,7 @@ exports.handler = async (event) => {
 
     const signUpCommand = new SignUpCommand({
       ClientId: process.env.COGNITO_CLIENT_ID,
-      Username: email,
+      Username: email.replace('@', '_').replace(/\./g, '_'),
       Password: password,
       UserAttributes: [
         { Name: 'email', Value: email },
