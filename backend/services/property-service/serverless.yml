@@ -33,7 +33,7 @@ functions:
     handler: src/createProperty.handler
     events:
       - httpApi:
-          path: /properties
+          path: /api/properties
           method: POST
           authorizer:
             id: ugclgq
@@ -42,21 +42,21 @@ functions:
     handler: src/listProperties.handler
     events:
       - httpApi:
-          path: /properties
+          path: /api/properties
           method: GET
 
   getProperty:
     handler: src/getProperty.handler
     events:
       - httpApi:
-          path: /properties/{id}
+          path: /api/properties/{id}
           method: GET
 
   uploadImage:
     handler: src/uploadImage.handler
     events:
       - httpApi:
-          path: /properties/{id}/images
+          path: /api/properties/{id}/images
           method: POST
           authorizer:
             id: ugclgq

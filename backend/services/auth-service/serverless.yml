@@ -23,26 +23,26 @@ functions:
     handler: src/register.handler
     events:
       - httpApi:
-          path: /auth/register
+          path: /api/auth/register
           method: POST
 
   login:
     handler: src/login.handler
     events:
       - httpApi:
-          path: /auth/login
+          path: /api/auth/login
           method: POST
 
   verify:
     handler: src/verify.handler
     events:
       - httpApi:
-          path: /auth/verify
+          path: /api/auth/verify
           method: POST
 
   resendCode:
     handler: src/resendCode.handler
     events:
       - httpApi:
-          path: /auth/resend-code
+          path: /api/auth/resend-code
           method: POST

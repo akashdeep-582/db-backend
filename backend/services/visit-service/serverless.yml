@@ -23,7 +23,7 @@ functions:
     handler: src/requestVisit.handler
     events:
       - httpApi:
-          path: /visits
+          path: /api/visits
           method: POST
           authorizer:
             id: ugclgq
@@ -32,7 +32,7 @@ functions:
     handler: src/getVisits.handler
     events:
       - httpApi:
-          path: /visits
+          path: /api/visits
           method: GET
           authorizer:
             id: ugclgq
@@ -41,7 +41,7 @@ functions:
     handler: src/updateVisit.handler
     events:
       - httpApi:
-          path: /visits/{id}
+          path: /api/visits/{id}
           method: PATCH
           authorizer:
             id: ugclgq

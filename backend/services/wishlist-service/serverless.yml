@@ -23,7 +23,7 @@ functions:
     handler: src/addWishlist.handler
     events:
       - httpApi:
-          path: /wishlists
+          path: /api/wishlists
           method: POST
           authorizer:
             id: ugclgq
@@ -32,7 +32,7 @@ functions:
     handler: src/getWishlist.handler
     events:
       - httpApi:
-          path: /wishlists
+          path: /api/wishlists
           method: GET
           authorizer:
             id: ugclgq
@@ -41,7 +41,7 @@ functions:
     handler: src/removeWishlist.handler
     events:
       - httpApi:
-          path: /wishlists/{propertyId}
+          path: /api/wishlists/{propertyId}
           method: DELETE
           authorizer:
             id: ugclgq

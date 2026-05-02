@@ -23,7 +23,7 @@ functions:
     handler: src/listPendingProperties.handler
     events:
       - httpApi:
-          path: /admin/properties
+          path: /api/admin/properties
           method: GET
           authorizer:
             id: ugclgq
@@ -32,7 +32,7 @@ functions:
     handler: src/updatePropertyStatus.handler
     events:
       - httpApi:
-          path: /admin/properties/{id}
+          path: /api/admin/properties/{id}
           method: PATCH
           authorizer:
             id: ugclgq
@@ -41,7 +41,7 @@ functions:
     handler: src/listUsers.handler
     events:
       - httpApi:
-          path: /admin/users
+          path: /api/admin/users
           method: GET
           authorizer:
             id: ugclgq
@@ -50,7 +50,7 @@ functions:
     handler: src/updateUser.handler
     events:
       - httpApi:
-          path: /admin/users/{id}
+          path: /api/admin/users/{id}
           method: PATCH
           authorizer:
             id: ugclgq

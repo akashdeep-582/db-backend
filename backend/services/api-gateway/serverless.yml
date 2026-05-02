@@ -21,7 +21,7 @@ functions:
     handler: src/healthCheck.handler
     events:
       - httpApi:
-          path: /health
+          path: /api/health
           method: GET
 
 resources:
