@@ -141,16 +141,28 @@ A property listing platform for owners and tenants, built with enterprise-grade 
 backend/
 └── services/
     ├── api-gateway/
+    │   ├── serverless.yml
+    │   ├── package.json
     │   └── src/healthCheck.js
     ├── auth-service/
+    │   ├── serverless.yml
+    │   ├── package.json
     │   └── src/ register.js, login.js, verify.js, resendCode.js, db.js
     ├── property-service/
+    │   ├── serverless.yml
+    │   ├── package.json
     │   └── src/ createProperty.js, listProperties.js, getProperty.js, uploadImage.js, auth.js, db.js
     ├── wishlist-service/
+    │   ├── serverless.yml
+    │   ├── package.json
     │   └── src/ addWishlist.js, getWishlist.js, removeWishlist.js, auth.js, db.js
     ├── visit-service/
+    │   ├── serverless.yml
+    │   ├── package.json
     │   └── src/ requestVisit.js, getVisits.js, updateVisit.js, auth.js, db.js
     └── admin-service/
+        ├── serverless.yml
+        ├── package.json
         └── src/ listPendingProperties.js, updatePropertyStatus.js, listUsers.js, updateUser.js, auth.js, db.js
 ```
 

@@ -45,12 +45,30 @@ functions:
           path: /api/properties
           method: GET
 
+  listMyProperties:
+    handler: src/listMyProperties.handler
+    events:
+      - httpApi:
+          path: /api/properties/my
+          method: GET
+          authorizer:
+            id: ugclgq
+
   getProperty:
     handler: src/getProperty.handler
     events:
       - httpApi:
           path: /api/properties/{id}
           method: GET
+
+  deleteProperty:
+    handler: src/deleteProperty.handler
+    events:
+      - httpApi:
+          path: /api/properties/{id}
+          method: DELETE
+          authorizer:
+            id: ugclgq
 
   uploadImage:
     handler: src/uploadImage.handler
